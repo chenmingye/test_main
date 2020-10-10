@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<script src="https://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+	<link href="css/froala_editor.pkgd.min.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="js/froala_editor.pkgd.min.js"></script>
+	<script src="js/languages/zh_cn.js"></script>
+	<style>
+
+
+	</style>
+</head>
+
+<body>
+	<textarea id="content" disabled></textarea>
+	<p>123</p>
+	<textarea id="content1"></textarea>
+	<p>
+		<button id='gethtml'>获取HTML内容</button>
+	</p>
+
+	<script>
+		var uploadUrl = '你的上传地址';
+		let froala_editor = new FroalaEditor( '#content', {
+			language: 'zh_cn',
+			imageUploadURL: uploadUrl,
+			imageManagerLoadURL: uploadUrl + '/ac/manage_images',
+			imageManagerDeleteURL: uploadUrl + '/ac/delete_image',
+			fileUploadURL: uploadUrl,
+			videoUploadURL: uploadUrl,
+			placeholderText: '请输入内容',
+			toolbarInline:false,
+			disabled:true
+		},function(){
+			// froala_editor.edit.off(); 禁止编辑
+			// froala_editor.edit.on(); 开启编辑
+			console.log(froala_editor.edit);
+			
+		} );
+		let froala_editor1 = new FroalaEditor( '#content1', {
+			language: 'zh_cn',
+			imageUploadURL: uploadUrl,
+			imageManagerLoadURL: uploadUrl + '/ac/manage_images',
+			imageManagerDeleteURL: uploadUrl + '/ac/delete_image',
+			fileUploadURL: uploadUrl,
+			videoUploadURL: uploadUrl,
+		} );
+
+		// froala_editor.froala Editor('edit.on');
+		
+		
+		$( function ()
+		{
+			$( "#gethtml" ).click( function ()
+			{
+				froala_editor.edit.on();
+				var html = froala_editor.html.get();
+				// var copyright ='<p data-f-id="pbf" style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;">Powered by <a href="https://www.froala.com/wysiwyg-editor?pb=1" title="Froala Editor">Froala Editor</a></p>';
+				// html  = html.replace(copyright, "");
+				console.log( html );
+			} )
+
+		} )
+	</script>
+
+
+
+
+</body>
+
+</html>

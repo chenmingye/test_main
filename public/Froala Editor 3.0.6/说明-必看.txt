@@ -1,0 +1,20 @@
+Froala Editor 3.0.6破解说明
+1、破解了线上提示购买授权的提示，线上不会再提示(具体见demo.html)
+2、通过替换的方法实现代码视图小尾巴问题(具体见demo.html)
+3、完善了简体中文的翻译。
+
+
+demo.html为本人配置的破解、汉化、上传的演示文件。
+index.html为官方演示导航，里面的文件还是有版权提示，如果在实际使用中请参考demo.html.
+
+虽然破解了线上版权提示，但是不算很完美的是当切换到代码视图的时候，代码中会存在这样一段代码：
+<p data-f-id="pbf" style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;">Powered by <a href="https://www.froala.com/wysiwyg-editor?pb=1" title="Froala Editor">Froala Editor</a></p>
+
+所以，只能通过间接的方法去除这个HTML代码：
+1、通过JS替换方法： 
+var html = froala_editor.html.get();  //获取编辑器HTML内容
+var copyright ='<p data-f-id="pbf" style="text-align: center; font-size: 14px; margin-top: 30px; opacity: 0.65; font-family: sans-serif;">Powered by <a href="https://www.froala.com/wysiwyg-editor?pb=1" title="Froala Editor">Froala Editor</a></p>';
+html  = html.replace(copyright, ""); //把代码替换为空。
+
+2、通过后端处理的方法，如果你是用的JAVA或PHP等后端语言，那么请自行根据语法去除。
+
